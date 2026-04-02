@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block title %}Explore STEM Careers — STEM Pathfinder{% endblock %}
+{% block content %}
+
+<div class="page-header">
+  <div class="container page-header-inner">
+    <p class="page-eyebrow"><i class="fa-solid fa-compass" aria-hidden="true"></i> Career Explorer</p>
+    <h1 class="page-title">Explore 10 STEM Careers 🔭</h1>
+    <p class="page-lead">Browse every career in our library. Search and filter to find what interests you most.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+
+    <div class="filter-bar anim">
+      <div class="row g-3 align-items-center">
+        <div class="col-md-5">
+          <div class="search-wrap">
+            <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
+            <input type="text" id="searchInput" class="search-input" placeholder="Search by title, skill, tag…" aria-label="Search careers" />
+          </div>
+        </div>
+        <div class="col-md-7">
+          <div class="chips" role="group" aria-label="Filter by topic">
+            <span style="font-size:.78rem;font-weight:800;color:var(--muted);white-space:nowrap;">Topic:</span>
+            {% for tag in all_tags %}
+            <button class="chip" data-tag="{{ tag }}" aria-pressed="false" type="button">{{ tag }}</button>
+            {% endfor %}
+            <button class="chip chip-clear" id="clearChips" type="button">✕ Clear</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-grid" id="cardGrid" aria-live="polite" aria-label="All STEM careers">
+      {% for c in careers %}
+      <article class="career-card anim"
+               data-tags="{{ c.tags | join(' ') }}"
+               data-title="{{ c.title }}"
+               data-skills="{{ (c.skills.technical + c.skills.transferable) | join(' ') }}"
+               aria-label="{{ c.title }}">
+        <div style="height:4px;background:{{ c.gradient }};"></div>
+        <div class="card-body">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <div class="card-icon" style="background:{{ c.gradient }};" aria-hidden="true">
+              <i class="{{ c.icon }}"></i>
+            </div>
+            <h2 class="card-title mb-0">{{ c.title }}</h2>
+          </div>
+
+          <p class="card-summary">{{ c.summary }}</p>
+
+          <div class="tags" aria-label="Tags">
+            {% for t in c.tags[:4] %}<span class="tag">{{ t }}</span>{% endfor %}
+          </div>
+
+          <div class="tags" aria-label="Technical skills">
+            {% for s in c.skills.technical[:3] %}<span class="tag tag-tech" style="font-size:.72rem;">{{ s }}</span>{% endfor %}
+          </div>
+
+          <div class="card-actions">
+            <a href="{{ url_for('career_detail', cid=c.id) }}" class="btn btn-primary btn-sm" style="flex:1;" aria-label="View {{ c.title }} pathway">View Pathway</a>
+            <form method="POST" action="{{ url_for('bookmark', cid=c.id) }}" style="display:inline;">
+              <input type="hidden" name="next" value="{{ request.url }}">
+              <button type="submit" class="btn btn-bookmark btn-sm {% if c.id in bookmarks %}active{% endif %}" aria-label="Bookmark {{ c.title }}">
+                <i class="fa-{% if c.id in bookmarks %}solid{% else %}regular{% endif %} fa-bookmark" aria-hidden="true"></i>
+              </button>
+            </form>
+            <form method="POST" action="{{ url_for('compare_toggle', cid=c.id) }}" style="display:inline;">
+              <input type="hidden" name="next" value="{{ request.url }}">
+              <button type="submit" class="btn btn-compare btn-sm {% if c.id in compare_list %}active{% endif %}" aria-label="Compare {{ c.title }}">
+                <i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+
+    <div id="noResults" class="no-results" style="display:none;" aria-live="polite">
+      <i class="fa-solid fa-search" aria-hidden="true"></i>
+      <h3>No careers found</h3>
+      <p>Try different keywords or clear the filter.</p>
+    </div>
+
+    <div class="text-center mt-5">
+      <a href="{{ url_for('home') }}" class="btn btn-primary btn-lg">
+        <i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i>
+        Get personalized matches 🎯
+      </a>
+    </div>
+
+  </div>
+</section>
+{% endblock %}

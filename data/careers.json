@@ -1,0 +1,472 @@
+[
+  {
+    "id": "software-engineer",
+    "title": "Software Engineer",
+    "summary": "Builds the apps, websites, and tools billions of people use every day.",
+    "description": "Software engineers design, write, and maintain the code that powers everything from social media to self-driving cars. They work in teams to solve hard problems, ship new features, and keep systems running fast and secure. The field spans front-end, back-end, mobile, and everything in between.",
+    "icon": "fa-solid fa-code",
+    "color": "#6366f1",
+    "gradient": "linear-gradient(135deg, #6366f1, #8b5cf6)",
+    "tags": ["coding", "math", "problem-solving", "design"],
+    "work_styles": ["collaborative", "creative", "analytical"],
+    "hs_courses": ["AP Computer Science A", "Algebra II / Precalculus", "Statistics", "Physics", "Intro to Programming"],
+    "extracurriculars": ["Coding club or hackathon team", "FIRST Robotics (programming roles)", "Open-source project contributions", "App or game jams"],
+    "skills": {
+      "technical": ["Python / JavaScript", "Git & version control", "Algorithms & data structures", "APIs & databases"],
+      "transferable": ["Communication", "Teamwork", "Time management", "Adaptability"]
+    },
+    "roadmap": {
+      "high_school": [
+        "Take math through Precalculus or Calculus and at least one CS course.",
+        "Build 2–3 personal projects and publish them on GitHub.",
+        "Compete in a hackathon or coding competition to learn fast under pressure."
+      ],
+      "post_secondary": [
+        "Major in Computer Science, Software Engineering, or a related field.",
+        "Complete at least one internship before graduating.",
+        "Learn cloud fundamentals, testing practices, and system design."
+      ],
+      "early_career": [
+        "Apply for junior SWE or associate engineer roles at startups or big tech.",
+        "Keep a learning habit — frameworks evolve fast."
+      ]
+    },
+    "education_links": {
+      "majors": [
+        {"title": "B.S. in Computer Science — MIT OpenCourseWare", "url": "https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/"},
+        {"title": "B.S. in Software Engineering (placeholder)", "url": "https://example.edu/software-engineering"}
+      ],
+      "programs": [
+        {"title": "Full-Stack Web Dev Bootcamp — The Odin Project (free)", "url": "https://www.theodinproject.com/"}
+      ],
+      "certifications": [
+        {"title": "AWS Certified Cloud Practitioner", "url": "https://aws.amazon.com/certification/certified-cloud-practitioner/"},
+        {"title": "Google IT Support Certificate — Coursera", "url": "https://www.coursera.org/professional-certificates/google-it-support"}
+      ]
+    },
+    "entry_level_jobs": ["Junior Software Engineer", "Associate Developer", "QA Engineer", "Web Developer"]
+  },
+  {
+    "id": "data-scientist",
+    "title": "Data Scientist",
+    "summary": "Turns mountains of raw data into insights that drive real decisions.",
+    "description": "Data scientists combine statistics, programming, and storytelling to find patterns in data. They help sports teams draft better players, hospitals predict patient risk, and companies understand their customers. If you love finding answers hidden in numbers, this field is for you.",
+    "icon": "fa-solid fa-chart-line",
+    "color": "#0ea5e9",
+    "gradient": "linear-gradient(135deg, #0ea5e9, #06b6d4)",
+    "tags": ["data", "math", "coding", "research", "problem-solving"],
+    "work_styles": ["analytical", "curious", "detail-oriented"],
+    "hs_courses": ["AP Statistics", "Precalculus / Calculus", "AP Computer Science", "Biology or Physics", "Economics"],
+    "extracurriculars": ["Math olympiad or competition", "Science fair with data-driven projects", "Kaggle beginner competitions", "School newspaper (data journalism)"],
+    "skills": {
+      "technical": ["Python (pandas, NumPy)", "SQL", "Data visualization", "Statistics & probability"],
+      "transferable": ["Critical thinking", "Storytelling", "Collaboration", "Curiosity"]
+    },
+    "roadmap": {
+      "high_school": [
+        "Ace Statistics and Calculus — they are the backbone of data science.",
+        "Start a mini-project analyzing something you care about (sports, music, climate).",
+        "Learn Python basics through free resources like Kaggle Learn."
+      ],
+      "post_secondary": [
+        "Major in Data Science, Statistics, Computer Science, or Applied Math.",
+        "Build a portfolio of 3+ end-to-end projects on GitHub.",
+        "Pursue a data-focused internship or research assistant role."
+      ],
+      "early_career": [
+        "Start as a Data Analyst to build SQL and visualization muscle.",
+        "Grow into ML engineering or research roles over 1–2 years."
+      ]
+    },
+    "education_links": {
+      "majors": [
+        {"title": "B.S. in Data Science — UC Berkeley (placeholder)", "url": "https://example.edu/data-science"},
+        {"title": "B.S. in Statistics (placeholder)", "url": "https://example.edu/statistics"}
+      ],
+      "programs": [
+        {"title": "Kaggle Learn — Free Data Science Courses", "url": "https://www.kaggle.com/learn"}
+      ],
+      "certifications": [
+        {"title": "Google Data Analytics Certificate — Coursera", "url": "https://www.coursera.org/professional-certificates/google-data-analytics"},
+        {"title": "IBM Data Science Certificate — Coursera", "url": "https://www.coursera.org/professional-certificates/ibm-data-science"}
+      ]
+    },
+    "entry_level_jobs": ["Data Analyst", "Business Intelligence Analyst", "Junior Data Scientist", "Research Assistant"]
+  },
+  {
+    "id": "cybersecurity-analyst",
+    "title": "Cybersecurity Analyst",
+    "summary": "The digital defenders who protect systems, data, and people from hackers.",
+    "description": "Cybersecurity analysts are the guardians of the internet — they monitor networks, investigate breaches, and build defenses that keep sensitive data safe. It is a field that combines technical skill with puzzle-solving instincts, and the demand for skilled analysts has never been higher.",
+    "icon": "fa-solid fa-shield-halved",
+    "color": "#ef4444",
+    "gradient": "linear-gradient(135deg, #ef4444, #f97316)",
+    "tags": ["security", "coding", "problem-solving", "ethics"],
+    "work_styles": ["detail-oriented", "analytical", "ethical"],
+    "hs_courses": ["Computer Science", "Networking / IT Fundamentals", "Algebra II", "Physics", "Cybersecurity (if offered)"],
+    "extracurriculars": ["CyberPatriot competition", "CTF (Capture the Flag) teams", "IT help desk volunteering", "Networking club"],
+    "skills": {
+      "technical": ["Networking fundamentals (TCP/IP)", "Linux & Windows administration", "Python / Bash scripting", "SIEM tools"],
+      "transferable": ["Attention to detail", "Ethical judgment", "Clear communication", "Documentation"]
+    },
+    "roadmap": {
+      "high_school": [
+        "Learn OS basics, networking, and how the internet actually works.",
+        "Join CyberPatriot or a local CTF team — hands-on reps matter most.",
+        "Set up a home lab with virtual machines to practice safely."
+      ],
+      "post_secondary": [
+        "Study Cybersecurity, Information Technology, or Computer Science.",
+        "Earn CompTIA Security+ early — it opens many doors.",
+        "Complete internships with SOC teams or IT departments."
+      ],
+      "early_career": [
+        "Start as a SOC Tier-1 Analyst or IT Security Technician.",
+        "Advance certifications toward CISSP or CEH over time."
+      ]
+    },
+    "education_links": {
+      "majors": [
+        {"title": "B.S. in Cybersecurity (placeholder)", "url": "https://example.edu/cybersecurity"},
+        {"title": "A.A.S. in Information Security (placeholder)", "url": "https://example.edu/infosec"}
+      ],
+      "programs": [
+        {"title": "Cisco Networking Academy — NetAcad (free)", "url": "https://www.netacad.com/"}
+      ],
+      "certifications": [
+        {"title": "CompTIA Security+", "url": "https://www.comptia.org/certifications/security"},
+        {"title": "Cisco CCNA", "url": "https://www.cisco.com/c/en/us/training-events/training-certifications/certifications/associate/ccna.html"}
+      ]
+    },
+    "entry_level_jobs": ["SOC Analyst (Tier 1)", "Junior Security Analyst", "IT Security Technician", "Penetration Tester (Junior)"]
+  },
+  {
+    "id": "biomedical-engineer",
+    "title": "Biomedical Engineer",
+    "summary": "Invents the medical devices and tech that save and improve lives.",
+    "description": "Biomedical engineers sit at the crossroads of engineering and medicine. They design prosthetic limbs, MRI machines, pacemakers, and drug delivery systems. Their work directly improves patient outcomes and quality of life — making it one of the most meaningful engineering fields.",
+    "icon": "fa-solid fa-heart-pulse",
+    "color": "#10b981",
+    "gradient": "linear-gradient(135deg, #10b981, #06b6d4)",
+    "tags": ["biology", "math", "research", "design", "problem-solving"],
+    "work_styles": ["creative", "detail-oriented", "collaborative"],
+    "hs_courses": ["AP Biology", "AP Chemistry", "Physics", "Precalculus / Calculus", "Computer Science (recommended)"],
+    "extracurriculars": ["Science Olympiad", "Hospital / clinical volunteering (non-clinical)", "Engineering club", "STEM research fairs"],
+    "skills": {
+      "technical": ["CAD software basics", "Biomechanics principles", "Data analysis (MATLAB / Python)", "Lab safety protocols"],
+      "transferable": ["Cross-disciplinary collaboration", "Ethics & patient focus", "Technical writing", "Problem framing"]
+    },
+    "roadmap": {
+      "high_school": [
+        "Build a strong science and math foundation — Bio, Chem, Physics, Calc.",
+        "Shadow or volunteer at a hospital to understand the clinical side.",
+        "Enter a STEM fair with a health-focused engineering project."
+      ],
+      "post_secondary": [
+        "Major in Biomedical Engineering (seek ABET-accredited programs).",
+        "Join a research lab as early as freshman year.",
+        "Intern at a medical device company like Medtronic or Boston Scientific."
+      ],
+      "early_career": [
+        "Target quality engineering, R&D assistant, or device testing roles.",
+        "Pursue grad school for research-focused career tracks."
+      ]
+    },
+    "education_links": {
+      "majors": [
+        {"title": "B.S. in Biomedical Engineering (placeholder)", "url": "https://example.edu/bme"},
+        {"title": "B.E. in Bioengineering (placeholder)", "url": "https://example.edu/bioengineering"}
+      ],
+      "programs": [
+        {"title": "Medical Device Certificate (placeholder)", "url": "https://example.edu/medical-device"}
+      ],
+      "certifications": [
+        {"title": "Regulatory Affairs Certification (RAPS) (placeholder)", "url": "https://www.raps.org/"},
+        {"title": "SolidWorks CSWA Certification", "url": "https://www.solidworks.com/sw/support/mcad/dswscertification.htm"}
+      ]
+    },
+    "entry_level_jobs": ["Biomedical Engineering Technician", "Quality Engineer (Medical Devices)", "Junior R&D Engineer", "Clinical Applications Specialist"]
+  },
+  {
+    "id": "robotics-engineer",
+    "title": "Robotics Engineer",
+    "summary": "Programs and builds the robots shaping manufacturing, space, and medicine.",
+    "description": "Robotics engineers blend mechanical design, electronics, and software into systems that can sense, think, and act. From factory automation to Mars rovers to surgical robots, the field is exploding — and FIRST Robotics is one of the best on-ramps in the country.",
+    "icon": "fa-solid fa-robot",
+    "color": "#8b5cf6",
+    "gradient": "linear-gradient(135deg, #8b5cf6, #6366f1)",
+    "tags": ["robotics", "building", "coding", "math", "design"],
+    "work_styles": ["hands-on", "creative", "collaborative"],
+    "hs_courses": ["Physics", "Precalculus / Calculus", "AP Computer Science", "Engineering & Design (shop / CAD)", "Electronics"],
+    "extracurriculars": ["FIRST Robotics Competition (FRC)", "Maker club or fab lab", "Drone building & racing", "CAD design club"],
+    "skills": {
+      "technical": ["CAD (Fusion 360 / SolidWorks)", "Microcontrollers (Arduino / Raspberry Pi)", "Python & C++", "Control systems"],
+      "transferable": ["Hands-on prototyping", "Project planning", "Teamwork under pressure", "Creative problem solving"]
+    },
+    "roadmap": {
+      "high_school": [
+        "Join FIRST Robotics — it is the single best HS experience for this field.",
+        "Learn CAD with free tools like Onshape or Fusion 360.",
+        "Build and document at least one original robot project."
+      ],
+      "post_secondary": [
+        "Major in Mechanical, Electrical, or Mechatronics / Robotics Engineering.",
+        "Intern with automation or manufacturing companies.",
+        "Take electives in control theory and embedded systems."
+      ],
+      "early_career": [
+        "Enter as a robotics technician, automation engineer, or test engineer.",
+        "Grow toward systems integration or robot programming roles."
+      ]
+    },
+    "education_links": {
+      "majors": [
+        {"title": "B.S. in Mechanical Engineering (placeholder)", "url": "https://example.edu/mechanical"},
+        {"title": "B.S. in Mechatronics Engineering (placeholder)", "url": "https://example.edu/mechatronics"}
+      ],
+      "programs": [
+        {"title": "Robotics Technician Certificate (placeholder)", "url": "https://example.edu/robotics-cert"}
+      ],
+      "certifications": [
+        {"title": "Certified Automation Professional — ISA", "url": "https://www.isa.org/certification/cap"},
+        {"title": "Arduino / Raspberry Pi Maker Certifications", "url": "https://www.arduino.cc/education"}
+      ]
+    },
+    "entry_level_jobs": ["Robotics Technician", "Automation Engineer (Junior)", "Embedded Systems Developer", "Mechanical Design Engineer"]
+  },
+  {
+    "id": "environmental-scientist",
+    "title": "Environmental Scientist",
+    "summary": "Studies and protects Earth's ecosystems, air, water, and climate.",
+    "description": "Environmental scientists collect field and lab data to understand pollution, climate change, and ecosystem health. They advise governments and companies on how to reduce environmental harm, remediate contaminated sites, and build a more sustainable world. It is science with immediate, real-world stakes.",
+    "icon": "fa-solid fa-leaf",
+    "color": "#22c55e",
+    "gradient": "linear-gradient(135deg, #22c55e, #10b981)",
+    "tags": ["environment", "biology", "research", "data", "problem-solving"],
+    "work_styles": ["curious", "hands-on", "ethical"],
+    "hs_courses": ["AP Environmental Science", "AP Biology", "AP Chemistry", "Statistics", "Geography"],
+    "extracurriculars": ["Environmental club or Green Team", "Citizen science projects (eBird, iNaturalist)", "Community clean-up leadership", "Science fair (ecology / sustainability focus)"],
+    "skills": {
+      "technical": ["Field sampling & data collection", "GIS / mapping tools", "Lab analysis", "Environmental regulations (EPA basics)"],
+      "transferable": ["Observation & patience", "Scientific writing", "Public communication", "Perseverance outdoors"]
+    },
+    "roadmap": {
+      "high_school": [
+        "Take AP Environmental Science and get outdoors as much as possible.",
+        "Volunteer for a local conservation or watershed group.",
+        "Start a citizen science project and log real data."
+      ],
+      "post_secondary": [
+        "Major in Environmental Science, Ecology, Earth Science, or Chemistry.",
+        "Do field work internships with the EPA, USDA, or nonprofits.",
+        "Learn GIS software (ArcGIS or QGIS) — it is highly valued."
+      ],
+      "early_career": [
+        "Enter as an Environmental Technician or Field Research Assistant.",
+        "Grow toward senior scientist, project manager, or policy advisor roles."
+      ]
+    },
+    "education_links": {
+      "majors": [
+        {"title": "B.S. in Environmental Science (placeholder)", "url": "https://example.edu/enviro-science"},
+        {"title": "B.S. in Ecology (placeholder)", "url": "https://example.edu/ecology"}
+      ],
+      "programs": [
+        {"title": "EPA Student Internship Programs", "url": "https://www.epa.gov/careers/student-internship-programs"}
+      ],
+      "certifications": [
+        {"title": "NEPA Basics — EPA Training (free)", "url": "https://www.epa.gov/nepa"},
+        {"title": "Esri ArcGIS Desktop Entry Certification", "url": "https://www.esri.com/training/certification/"}
+      ]
+    },
+    "entry_level_jobs": ["Environmental Technician", "Field Research Assistant", "Junior Environmental Consultant", "Lab Analyst"]
+  },
+  {
+    "id": "ux-designer",
+    "title": "UX / UI Designer",
+    "summary": "Designs digital experiences that feel effortless and look amazing.",
+    "description": "UX and UI designers figure out how people interact with technology and then make that experience intuitive, accessible, and beautiful. They research users, sketch wireframes, build prototypes, and run tests — working alongside engineers and product managers. If you have empathy and an eye for design, this path is for you.",
+    "icon": "fa-solid fa-pen-ruler",
+    "color": "#ec4899",
+    "gradient": "linear-gradient(135deg, #ec4899, #f97316)",
+    "tags": ["design", "coding", "communication", "research", "problem-solving"],
+    "work_styles": ["creative", "collaborative", "curious"],
+    "hs_courses": ["Art & Graphic Design", "Computer Science", "Psychology (if available)", "English / Creative Writing", "Intro to Web Design"],
+    "extracurriculars": ["Design club or art club", "School newspaper / yearbook (layout/design)", "App or game design projects", "Volunteering to redesign a local nonprofit's website"],
+    "skills": {
+      "technical": ["Figma / Adobe XD", "Wireframing & prototyping", "HTML & CSS basics", "Usability testing methods"],
+      "transferable": ["Empathy", "Active listening", "Visual storytelling", "Giving & receiving feedback"]
+    },
+    "roadmap": {
+      "high_school": [
+        "Build a design portfolio — redesign apps you use and document your process.",
+        "Learn Figma (free for students) and create at least 2 case studies.",
+        "Study psychology and how people think — UX is 50% empathy."
+      ],
+      "post_secondary": [
+        "Study HCI, Interaction Design, Graphic Design, or CS with a design focus.",
+        "Intern at product companies; real case studies beat classroom projects.",
+        "Join design communities like ADPList to find mentors."
+      ],
+      "early_career": [
+        "Enter as a Junior UX Researcher, Product Designer, or UI Developer.",
+        "Build a strong portfolio site — it matters more than your GPA."
+      ]
+    },
+    "education_links": {
+      "majors": [
+        {"title": "B.F.A. in Interaction Design (placeholder)", "url": "https://example.edu/interaction-design"},
+        {"title": "B.S. in Human-Computer Interaction (placeholder)", "url": "https://example.edu/hci"}
+      ],
+      "programs": [
+        {"title": "Google UX Design Certificate — Coursera", "url": "https://www.coursera.org/professional-certificates/google-ux-design"}
+      ],
+      "certifications": [
+        {"title": "Nielsen Norman Group UX Certification", "url": "https://www.nngroup.com/ux-certification/"},
+        {"title": "Figma for Beginners (free)", "url": "https://www.figma.com/resources/learn-design/"}
+      ]
+    },
+    "entry_level_jobs": ["Junior UX Designer", "Product Designer", "UI Developer", "UX Researcher"]
+  },
+  {
+    "id": "ai-ml-engineer",
+    "title": "AI / ML Engineer",
+    "summary": "Builds the intelligent systems behind recommendations, voice assistants, and more.",
+    "description": "AI and ML engineers design, train, and deploy models that let computers learn from data. They power everything from Netflix recommendations to medical diagnosis to self-driving cars. It is one of the fastest-growing and highest-paying fields in tech, combining math, statistics, and serious coding.",
+    "icon": "fa-solid fa-brain",
+    "color": "#a855f7",
+    "gradient": "linear-gradient(135deg, #a855f7, #6366f1)",
+    "tags": ["coding", "math", "data", "research", "problem-solving"],
+    "work_styles": ["analytical", "curious", "detail-oriented"],
+    "hs_courses": ["AP Calculus BC", "AP Statistics", "AP Computer Science A", "Linear Algebra (if offered)", "Physics"],
+    "extracurriculars": ["AI / ML club", "Kaggle competitions", "Research mentorship programs", "Hackathons with AI themes"],
+    "skills": {
+      "technical": ["Python (NumPy, PyTorch / TensorFlow)", "Linear algebra & calculus", "Model training & evaluation", "Cloud ML platforms (AWS / GCP)"],
+      "transferable": ["Analytical thinking", "Research methodology", "Explaining complex ideas simply", "Curiosity & patience"]
+    },
+    "roadmap": {
+      "high_school": [
+        "Master Calculus and Statistics — they are non-negotiable for ML.",
+        "Learn Python and complete fast.ai or Kaggle Learn's ML intro.",
+        "Build a small ML project (image classifier, sentiment analyzer) and share it."
+      ],
+      "post_secondary": [
+        "Major in CS, Applied Math, or Data Science with ML coursework.",
+        "Publish or contribute to a research project by junior year.",
+        "Complete internships at companies with ML teams."
+      ],
+      "early_career": [
+        "Enter as a Junior ML Engineer, AI Research Assistant, or Data Engineer.",
+        "Specialize in a domain: NLP, computer vision, reinforcement learning."
+      ]
+    },
+    "education_links": {
+      "majors": [
+        {"title": "B.S. in Computer Science (AI track) (placeholder)", "url": "https://example.edu/cs-ai"},
+        {"title": "B.S. in Applied Mathematics (placeholder)", "url": "https://example.edu/applied-math"}
+      ],
+      "programs": [
+        {"title": "Deep Learning Specialization — Coursera (Andrew Ng)", "url": "https://www.coursera.org/specializations/deep-learning"}
+      ],
+      "certifications": [
+        {"title": "TensorFlow Developer Certificate", "url": "https://www.tensorflow.org/certificate"},
+        {"title": "AWS Certified Machine Learning — Specialty", "url": "https://aws.amazon.com/certification/certified-machine-learning-specialty/"}
+      ]
+    },
+    "entry_level_jobs": ["Junior ML Engineer", "AI Research Assistant", "Data Engineer", "Computer Vision Engineer"]
+  },
+  {
+    "id": "network-engineer",
+    "title": "Network Engineer",
+    "summary": "Designs and maintains the infrastructure that keeps the internet alive.",
+    "description": "Network engineers plan, build, and troubleshoot the routers, switches, firewalls, and cables that connect everything — from a single office to global cloud infrastructure. When the network goes down, they fix it. When a company grows, they scale it. It is a field where deep technical skill meets real-world impact.",
+    "icon": "fa-solid fa-network-wired",
+    "color": "#0369a1",
+    "gradient": "linear-gradient(135deg, #0369a1, #0ea5e9)",
+    "tags": ["coding", "problem-solving", "security", "math"],
+    "work_styles": ["analytical", "detail-oriented", "hands-on"],
+    "hs_courses": ["Computer Science", "Networking / IT (if offered)", "Algebra II", "Physics", "Electronics"],
+    "extracurriculars": ["IT help desk volunteering", "Networking club", "CyberPatriot (infrastructure events)", "Home lab setup"],
+    "skills": {
+      "technical": ["TCP/IP & subnetting", "Routing & switching (Cisco / Juniper)", "Firewalls & VPNs", "Linux & Windows Server"],
+      "transferable": ["Systematic troubleshooting", "Documentation", "Calm under pressure", "Clear communication"]
+    },
+    "roadmap": {
+      "high_school": [
+        "Set up a home lab — even an old router and some Raspberry Pis go a long way.",
+        "Take Cisco's free NetAcad courses and aim for CCNA in high school.",
+        "Volunteer for school IT support to get real-world reps."
+      ],
+      "post_secondary": [
+        "Study Computer Networking, IT, or Computer Science.",
+        "Earn your CCNA — it is the gold standard entry cert.",
+        "Intern with MSPs (Managed Service Providers) for hands-on breadth."
+      ],
+      "early_career": [
+        "Enter as a Network Technician, Help Desk Tier 2, or Junior NOC Analyst.",
+        "Progress toward CCNP and senior network engineer roles."
+      ]
+    },
+    "education_links": {
+      "majors": [
+        {"title": "B.S. in Computer Networking (placeholder)", "url": "https://example.edu/networking"},
+        {"title": "A.A.S. in Information Technology (placeholder)", "url": "https://example.edu/it-aas"}
+      ],
+      "programs": [
+        {"title": "Cisco Networking Academy — NetAcad (free)", "url": "https://www.netacad.com/"}
+      ],
+      "certifications": [
+        {"title": "CompTIA Network+", "url": "https://www.comptia.org/certifications/network"},
+        {"title": "Cisco CCNA", "url": "https://www.cisco.com/c/en/us/training-events/training-certifications/certifications/associate/ccna.html"}
+      ]
+    },
+    "entry_level_jobs": ["Network Technician", "IT Support Specialist", "Junior Network Administrator", "NOC Analyst"]
+  },
+  {
+    "id": "bioinformatics-scientist",
+    "title": "Bioinformatics Scientist",
+    "summary": "Uses code and statistics to decode genomes and accelerate medicine.",
+    "description": "Bioinformatics scientists sit at the crossroads of biology, computer science, and statistics — using code to analyze DNA sequences, protein structures, and disease data. They work in genomics labs, pharma companies, and research institutions to accelerate drug discovery and personalized medicine.",
+    "icon": "fa-solid fa-dna",
+    "color": "#0d9488",
+    "gradient": "linear-gradient(135deg, #0d9488, #22c55e)",
+    "tags": ["biology", "coding", "data", "research", "math"],
+    "work_styles": ["analytical", "curious", "detail-oriented"],
+    "hs_courses": ["AP Biology", "AP Chemistry", "AP Statistics", "AP Computer Science", "Calculus"],
+    "extracurriculars": ["Science fair (biology / genetics focus)", "Coding club", "STEM research mentorships", "Online genomics courses (Coursera, edX)"],
+    "skills": {
+      "technical": ["Python & R for biology", "Genomic databases (NCBI, Ensembl)", "Statistical modeling", "Linux command line"],
+      "transferable": ["Scientific curiosity", "Attention to detail", "Scientific writing", "Cross-disciplinary thinking"]
+    },
+    "roadmap": {
+      "high_school": [
+        "Strengthen both biology and CS simultaneously — you will need both.",
+        "Explore free genomics datasets from NCBI for self-directed projects.",
+        "Take an online intro to bioinformatics course through Coursera or edX."
+      ],
+      "post_secondary": [
+        "Major in Bioinformatics, Computational Biology, or CS + Biology double major.",
+        "Work in a research lab from freshman year.",
+        "Learn pipeline tools like Snakemake and cloud computing basics."
+      ],
+      "early_career": [
+        "Enter as a Bioinformatics Analyst or Research Computing Technician.",
+        "Many roles benefit from or require a graduate degree for advancement."
+      ]
+    },
+    "education_links": {
+      "majors": [
+        {"title": "B.S. in Bioinformatics (placeholder)", "url": "https://example.edu/bioinformatics"},
+        {"title": "B.S. in Computational Biology (placeholder)", "url": "https://example.edu/comp-bio"}
+      ],
+      "programs": [
+        {"title": "Genomic Data Science Specialization — Coursera", "url": "https://www.coursera.org/specializations/genomic-data-science"}
+      ],
+      "certifications": [
+        {"title": "NCBI / NLM Bioinformatics Resources (free)", "url": "https://www.ncbi.nlm.nih.gov/home/learn/"},
+        {"title": "edX Bioinformatics MicroMasters (placeholder)", "url": "https://www.edx.org/"}
+      ]
+    },
+    "entry_level_jobs": ["Bioinformatics Analyst", "Research Computing Technician", "Computational Biology Research Assistant", "Genomics Data Analyst"]
+  }
+]

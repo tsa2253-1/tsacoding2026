@@ -1,0 +1,174 @@
+{% extends "base.html" %}
+{% block title %}My Roadmap — STEM Pathfinder{% endblock %}
+{% block content %}
+
+<div class="page-header">
+  <div class="container page-header-inner">
+    <p class="page-eyebrow"><i class="fa-solid fa-map" aria-hidden="true"></i> Your personalized plan</p>
+    <h1 class="page-title">Your STEM Roadmap 🗺️</h1>
+    <p class="page-lead">A step-by-step plan from where you are now to your first STEM job. Check items off as you go!</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+
+    {% if not interests and not primary %}
+    <div class="no-results">
+      <i class="fa-solid fa-map" aria-hidden="true"></i>
+      <h2>Take the quiz first!</h2>
+      <p>We need your interests and strengths to build a personalized roadmap.</p>
+      <a href="{{ url_for('home') }}#quiz" class="btn btn-primary btn-lg mt-3">
+        <i class="fa-solid fa-play" aria-hidden="true"></i> Start the quiz
+      </a>
+    </div>
+
+    {% else %}
+    <div class="row gy-4">
+
+      <!-- Main roadmap -->
+      <div class="col-lg-8">
+
+        {% if primary %}
+        {% set c = primary.career %}
+
+        <!-- Career header card -->
+        <div style="background:var(--surface);border:2px solid var(--border);border-radius:var(--radius-xl);padding:1.5rem;margin-bottom:1.5rem;display:flex;align-items:flex-start;gap:1rem;box-shadow:var(--shadow-md);" class="anim">
+          <div style="width:3.5rem;height:3.5rem;border-radius:1rem;background:{{ c.gradient }};display:flex;align-items:center;justify-content:center;color:white;font-size:1.3rem;flex-shrink:0;" aria-hidden="true">
+            <i class="{{ c.icon }}"></i>
+          </div>
+          <div>
+            <p style="font-size:.75rem;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.25rem;">Your top career match</p>
+            <h2 style="font-size:1.3rem;margin-bottom:.35rem;">{{ c.title }}</h2>
+            <p style="color:var(--muted);font-size:.88rem;margin:0;">{{ c.summary }}</p>
+          </div>
+        </div>
+
+        <!-- Phase 1 -->
+        <div class="phase anim d1">
+          <div class="phase-header" style="background:linear-gradient(135deg,var(--blue),var(--cyan));">
+            <i class="fa-solid fa-school" aria-hidden="true"></i>
+            Phase 1 — High School
+            <span style="font-weight:400;font-size:.75rem;opacity:.8;margin-left:.5rem;">Where you are now</span>
+          </div>
+          <div class="phase-body">
+            <p style="color:var(--muted);font-size:.85rem;margin-bottom:1rem;">✅ Tap each item to check it off as you complete it!</p>
+            <ul class="checklist" aria-label="High school phase checklist">
+              {% for s in c.roadmap.high_school %}
+              <li><span class="check-ring" aria-hidden="true"></span><span>{{ s }}</span></li>
+              {% endfor %}
+              <li><span class="check-ring" aria-hidden="true"></span><span>Research colleges and programs offering {{ c.title | lower }} paths.</span></li>
+              <li><span class="check-ring" aria-hidden="true"></span><span>Talk with your counselor or a STEM mentor about your goals.</span></li>
+            </ul>
+            <div style="margin-top:1rem;padding:.85rem 1rem;background:rgba(59,130,246,.08);border-left:3px solid var(--blue);border-radius:0 var(--radius-sm) var(--radius-sm) 0;">
+              <p style="margin:0;font-size:.85rem;"><strong>📚 Recommended courses:</strong> {{ c.hs_courses | join(" · ") }}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phase 2 -->
+        <div class="phase anim d2">
+          <div class="phase-header" style="background:linear-gradient(135deg,var(--orange),var(--pink));">
+            <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
+            Phase 2 — Post-Secondary Education
+            <span style="font-weight:400;font-size:.75rem;opacity:.8;margin-left:.5rem;">College, bootcamp, or trade program</span>
+          </div>
+          <div class="phase-body">
+            <ul class="checklist" aria-label="Post-secondary phase checklist">
+              {% for s in c.roadmap.post_secondary %}
+              <li><span class="check-ring" aria-hidden="true"></span><span>{{ s }}</span></li>
+              {% endfor %}
+              <li><span class="check-ring" aria-hidden="true"></span><span>Build a public portfolio showcasing 3+ real projects.</span></li>
+              <li><span class="check-ring" aria-hidden="true"></span><span>Connect with professionals on LinkedIn and attend local meetups.</span></li>
+            </ul>
+            <div style="margin-top:1rem;">
+              <p style="font-size:.8rem;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.6rem;">
+                <i class="fa-solid fa-link" aria-hidden="true"></i> Explore these pathways:
+              </p>
+              <div class="edu-links">
+                {% for l in (c.education_links.majors + c.education_links.programs + c.education_links.certifications)[:3] %}
+                <a href="{{ l.url }}" target="_blank" rel="noopener noreferrer" class="edu-link" style="font-size:.85rem;">
+                  <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>{{ l.title }}
+                </a>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phase 3 -->
+        <div class="phase anim d3">
+          <div class="phase-header" style="background:linear-gradient(135deg,var(--green),var(--cyan));">
+            <i class="fa-solid fa-briefcase" aria-hidden="true"></i>
+            Phase 3 — Early Career
+            <span style="font-weight:400;font-size:.75rem;opacity:.8;margin-left:.5rem;">Your first professional role</span>
+          </div>
+          <div class="phase-body">
+            <ul class="checklist" aria-label="Early career phase checklist">
+              {% for s in c.roadmap.early_career %}
+              <li><span class="check-ring" aria-hidden="true"></span><span>{{ s }}</span></li>
+              {% endfor %}
+              <li><span class="check-ring" aria-hidden="true"></span><span>Tailor your resume using keywords from real job postings.</span></li>
+              <li><span class="check-ring" aria-hidden="true"></span><span>Practice your 60-second professional intro for interviews.</span></li>
+            </ul>
+            <div style="margin-top:1rem;padding:.85rem 1rem;background:rgba(34,197,94,.08);border-left:3px solid var(--green);border-radius:0 var(--radius-sm) var(--radius-sm) 0;">
+              <p style="margin:0;font-size:.85rem;"><strong>🎯 Job titles to search:</strong> {{ c.entry_level_jobs | join(" · ") }}</p>
+            </div>
+          </div>
+        </div>
+
+        {% endif %}
+
+        <!-- Counselor note -->
+        <div style="background:var(--surface2);border:2px dashed var(--border);border-radius:var(--radius-xl);padding:1.5rem;margin-top:.5rem;" class="anim d4">
+          <p style="margin:0;font-size:.9rem;">
+            <i class="fa-solid fa-circle-info" style="color:var(--violet);" aria-hidden="true"></i>
+            <strong> Always talk with a trusted adult.</strong>
+            This roadmap is a great starting point — your counselor, teacher, or family can help you shape it around your real situation. 💙
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Sidebar -->
+      <div class="col-lg-4">
+
+        <div class="sidebar-card">
+          <h2 class="sidebar-title"><i class="fa-solid fa-user" aria-hidden="true"></i> Your Profile</h2>
+          {% if interests %}
+          <p style="font-size:.75rem;font-weight:800;color:var(--muted);text-transform:uppercase;margin-bottom:.5rem;">Interests</p>
+          <div class="tags mb-3">{% for i in interests %}<span class="tag">{{ i }}</span>{% endfor %}</div>
+          {% endif %}
+          {% if strengths %}
+          <p style="font-size:.75rem;font-weight:800;color:var(--muted);text-transform:uppercase;margin-bottom:.5rem;">Strengths</p>
+          <div class="tags mb-3">{% for s in strengths %}<span class="tag tag-soft">{{ s }}</span>{% endfor %}</div>
+          {% endif %}
+          <a href="{{ url_for('home') }}#quiz" class="btn btn-secondary btn-sm" style="display:flex;">
+            <i class="fa-solid fa-rotate-left" aria-hidden="true"></i> Update my answers
+          </a>
+        </div>
+
+        {% if scored | length > 1 %}
+        <div class="sidebar-card">
+          <h2 class="sidebar-title"><i class="fa-solid fa-list-check" aria-hidden="true"></i> Other top matches</h2>
+          {% for item in scored[1:5] %}
+          {% set sc = item.career %}
+          <a href="{{ url_for('career_detail', cid=sc.id) }}" class="similar-link">
+            <span class="similar-icon" style="background:{{ sc.gradient }};" aria-hidden="true"><i class="{{ sc.icon }}"></i></span>
+            <div>
+              <div class="similar-name">{{ sc.title }}</div>
+              <div style="font-size:.75rem;color:var(--muted);">{{ item.score }}% match</div>
+            </div>
+          </a>
+          {% endfor %}
+          <a href="{{ url_for('recommend') }}" class="btn btn-outline btn-sm" style="display:flex;margin-top:.75rem;">View all matches →</a>
+        </div>
+        {% endif %}
+
+      </div>
+    </div>
+    {% endif %}
+
+  </div>
+</section>
+{% endblock %}

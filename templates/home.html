@@ -1,0 +1,223 @@
+{% extends "base.html" %}
+{% block title %}STEM Pathfinder — Find Your STEM Career Path{% endblock %}
+
+{% block content %}
+
+<!-- ── Hero ─────────────────────────────────────────────────── -->
+<section class="hero" aria-label="Welcome hero">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-6 hero-inner">
+        <div class="hero-eyebrow anim">
+          <i class="fa-solid fa-rocket" aria-hidden="true"></i>
+          Built for grades 7–12 · NJ TSA 2026
+        </div>
+        <h1 class="anim d1">
+          Your <span class="grad-text">STEM future</span><br>starts right here. 🚀
+        </h1>
+        <p class="hero-lead anim d2">
+          Tell us what you love and where you shine — we'll match you with STEM careers,
+          show you the exact path to get there, and help you plan every step.
+        </p>
+        <div class="hero-cta anim d3">
+          <a href="#quiz" class="btn btn-primary btn-lg">
+            <i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i>
+            Take the Quiz 🎯
+          </a>
+          <a href="{{ url_for('careers') }}" class="btn btn-secondary btn-lg">
+            <i class="fa-solid fa-compass" aria-hidden="true"></i>
+            Browse Careers
+          </a>
+        </div>
+        <div class="hero-stats anim d4">
+          <div>
+            <span class="stat-num">10</span>
+            <span class="stat-label">STEM Careers</span>
+          </div>
+          <div>
+            <span class="stat-num">3</span>
+            <span class="stat-label">Pathway Stages</span>
+          </div>
+          <div>
+            <span class="stat-num">∞</span>
+            <span class="stat-label">Possibilities</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 d-none d-lg-block">
+        <div class="hero-visual">
+          <div class="blob-grid">
+            {% for em, lbl in [
+              ("💻","Coding"),("🧮","Math"),("🔬","Biology"),
+              ("🤖","Robotics"),("🛡️","Security"),("📊","Data"),
+              ("🌿","Environment"),("🎨","Design"),("🧠","AI / ML")
+            ] %}
+            <div class="blob-item">
+              <span class="blob-emoji" aria-hidden="true">{{ em }}</span>
+              <span class="blob-label">{{ lbl }}</span>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── How it Works ──────────────────────────────────────────── -->
+<section class="section section-alt" aria-label="How STEM Pathfinder works">
+  <div class="container">
+    <div class="section-head">
+      <h2>How it works 🧭</h2>
+      <p>Three steps from "I don't know" to "I have a plan."</p>
+    </div>
+    <div class="row g-4 text-center">
+      {% for icon, color, step, title, desc in [
+        ("fa-list-check", "#6366f1", "1", "Tell us about you", "Select the topics you love and the skills you're proud of — no wrong answers."),
+        ("fa-wand-magic-sparkles", "#ec4899", "2", "Get matched instantly", "Our transparent scoring finds careers that fit your unique combo of interests and strengths."),
+        ("fa-road", "#22c55e", "3", "Follow your path", "Get a step-by-step roadmap from high school through your first real STEM job."),
+      ] %}
+      <div class="col-md-4 anim d{{ loop.index }}">
+        <div style="background:var(--surface);border:2px solid var(--border);border-radius:var(--radius-xl);padding:2rem;height:100%;box-shadow:var(--shadow-card);">
+          <div style="width:3.5rem;height:3.5rem;border-radius:1rem;background:{{ color }};display:flex;align-items:center;justify-content:center;color:white;font-size:1.3rem;margin:0 auto 1rem;" aria-hidden="true">
+            <i class="{{ icon }}"></i>
+          </div>
+          <div style="font-family:var(--font-display);font-size:2rem;font-weight:800;color:{{ color }};margin-bottom:.25rem;">{{ step }}</div>
+          <h3 style="font-size:1rem;margin-bottom:.5rem;">{{ title }}</h3>
+          <p style="font-size:.88rem;color:var(--muted);margin:0;">{{ desc }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ── Quiz ──────────────────────────────────────────────────── -->
+<section class="section" id="quiz" aria-label="Career quiz">
+  <div class="container">
+    <div class="section-head">
+      <h2>What makes you <span class="grad-text">you?</span> ✨</h2>
+      <p>Pick everything that fits — you can change these anytime. No account needed.</p>
+    </div>
+
+    <form action="{{ url_for('recommend') }}" method="POST" aria-label="Career interest quiz" novalidate>
+      <div class="quiz-wrap anim d1">
+
+        <!-- Grade -->
+        <div class="quiz-section">
+          <div class="quiz-section-header">
+            <h2 class="quiz-section-title">
+              <span class="quiz-title-icon" style="background:var(--violet);" aria-hidden="true">
+                <i class="fa-solid fa-graduation-cap"></i>
+              </span>
+              What grade are you in?
+              <span style="font-weight:400;font-size:.85rem;color:var(--muted);">(optional)</span>
+            </h2>
+          </div>
+          <select name="grade" class="form-select" style="max-width:260px;background:var(--surface2);border:2px solid var(--border);color:var(--text);border-radius:var(--radius-full);font-family:var(--font-body);">
+            <option value="">Prefer not to say</option>
+            {% for g in ["7","8","9 (Freshman)","10 (Sophomore)","11 (Junior)","12 (Senior)"] %}
+            <option value="{{ g[0] }}" {% if session.get('grade','')[0:1] == g[0] %}selected{% endif %}>Grade {{ g }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <!-- Interests -->
+        <div class="quiz-section" id="interestSection">
+          <div class="quiz-section-header">
+            <h2 class="quiz-section-title">
+              <span class="quiz-title-icon" style="background:var(--pink);" aria-hidden="true">
+                <i class="fa-solid fa-heart"></i>
+              </span>
+              What topics interest you? 💡
+            </h2>
+            <div style="display:flex;gap:.5rem;">
+              <button type="button" class="btn btn-secondary btn-sm" data-quiz-action="all" aria-label="Select all interests">All</button>
+              <button type="button" class="btn btn-secondary btn-sm" data-quiz-action="none" aria-label="Clear interests">Clear</button>
+            </div>
+          </div>
+          <p style="color:var(--muted);font-size:.85rem;margin-bottom:1rem;">Pick as many as you like — even vague interests count!</p>
+          <div class="option-grid" role="group" aria-label="Interest topics">
+            {% for val, label, icon in interest_options %}
+            <label class="option-label">
+              <input type="checkbox" name="interests" value="{{ val }}" {% if val in sel_interests %}checked{% endif %} />
+              <span class="option-check" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
+              <span class="option-icon" aria-hidden="true"><i class="{{ icon }}"></i></span>
+              {{ label }}
+            </label>
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- Strengths -->
+        <div class="quiz-section" id="strengthSection">
+          <div class="quiz-section-header">
+            <h2 class="quiz-section-title">
+              <span class="quiz-title-icon" style="background:var(--orange);" aria-hidden="true">
+                <i class="fa-solid fa-star"></i>
+              </span>
+              What are your strengths? 💪
+            </h2>
+            <div style="display:flex;gap:.5rem;">
+              <button type="button" class="btn btn-secondary btn-sm" data-quiz-action="all">All</button>
+              <button type="button" class="btn btn-secondary btn-sm" data-quiz-action="none">Clear</button>
+            </div>
+          </div>
+          <p style="color:var(--muted);font-size:.85rem;margin-bottom:1rem;">Think about what teachers and friends say you excel at.</p>
+          <div class="option-grid" role="group" aria-label="Personal strengths">
+            {% for val, label, icon in strength_options %}
+            <label class="option-label">
+              <input type="checkbox" name="strengths" value="{{ val }}" {% if val in sel_strengths %}checked{% endif %} />
+              <span class="option-check" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
+              <span class="option-icon" aria-hidden="true"><i class="{{ icon }}"></i></span>
+              {{ label }}
+            </label>
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- Work Style -->
+        <div class="quiz-section" id="styleSection">
+          <div class="quiz-section-header">
+            <h2 class="quiz-section-title">
+              <span class="quiz-title-icon" style="background:var(--cyan);" aria-hidden="true">
+                <i class="fa-solid fa-user-gear"></i>
+              </span>
+              How do you like to work? ⚙️
+            </h2>
+            <div style="display:flex;gap:.5rem;">
+              <button type="button" class="btn btn-secondary btn-sm" data-quiz-action="all">All</button>
+              <button type="button" class="btn btn-secondary btn-sm" data-quiz-action="none">Clear</button>
+            </div>
+          </div>
+          <div class="option-grid" role="group" aria-label="Work style preferences">
+            {% for val, label, icon in work_style_options %}
+            <label class="option-label">
+              <input type="checkbox" name="work_styles" value="{{ val }}" {% if val in sel_styles %}checked{% endif %} />
+              <span class="option-check" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
+              <span class="option-icon" aria-hidden="true"><i class="{{ icon }}"></i></span>
+              {{ label }}
+            </label>
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <div class="quiz-submit">
+          <p style="color:var(--muted);font-size:.85rem;margin:0;">
+            <i class="fa-solid fa-lock" aria-hidden="true"></i>
+            No account · No data saved to servers · Instant results
+          </p>
+          <button type="submit" class="btn btn-primary btn-lg">
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            Find My STEM Careers 🎯
+          </button>
+        </div>
+
+      </div>
+    </form>
+  </div>
+</section>
+
+{% endblock %}

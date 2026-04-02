@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+{% block title %}Compare Careers — STEM Pathfinder{% endblock %}
+{% block content %}
+
+<div class="page-header">
+  <div class="container page-header-inner">
+    <p class="page-eyebrow"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i> Side-by-side</p>
+    <h1 class="page-title">Compare Careers ⚖️</h1>
+    <p class="page-lead">Compare up to 3 careers side-by-side to find what fits you best.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+
+    {% if not careers %}
+    <div class="no-results">
+      <i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>
+      <h2>Nothing to compare yet</h2>
+      <p>Hit the ⚖️ button on any career card to add it here. You can add up to 3.</p>
+      <a href="{{ url_for('careers') }}" class="btn btn-primary mt-3">Browse careers</a>
+    </div>
+
+    {% elif careers | length == 1 %}
+    <div class="no-results">
+      <div style="font-size:3rem;margin-bottom:1rem;" aria-hidden="true">👆</div>
+      <h2>Add one more!</h2>
+      <p>You have <strong>{{ careers[0].title }}</strong> selected. Add at least one more to compare.</p>
+      <a href="{{ url_for('careers') }}" class="btn btn-primary mt-3">Browse careers</a>
+    </div>
+
+    {% else %}
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;border:2px solid var(--border);border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-md);" aria-label="Career comparison">
+        <thead>
+          <tr>
+            <th style="background:var(--violet);color:white;padding:1rem 1.25rem;font-family:var(--font-display);font-weight:800;width:160px;vertical-align:top;">Category</th>
+            {% for c in careers %}
+            <th style="background:{{ c.color }};color:white;padding:1rem 1.25rem;font-family:var(--font-display);font-weight:800;vertical-align:top;">
+              <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.75rem;">
+                <span style="width:2rem;height:2rem;border-radius:.5rem;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:.85rem;" aria-hidden="true"><i class="{{ c.icon }}"></i></span>
+                {{ c.title }}
+              </div>
+              <form method="POST" action="{{ url_for('compare_toggle', cid=c.id) }}" style="display:inline;">
+                <input type="hidden" name="next" value="{{ request.url }}">
+                <button type="submit" style="background:rgba(255,255,255,.2);border:1.5px solid rgba(255,255,255,.4);color:white;padding:.3rem .75rem;border-radius:var(--radius-full);font-size:.78rem;font-weight:700;cursor:pointer;">
+                  ✕ Remove
+                </button>
+              </form>
+            </th>
+            {% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          {% for row_label, row_key in [
+            ("Summary", "summary"),
+          ] %}
+          <tr>
+            <td style="background:var(--surface2);padding:1rem 1.25rem;font-size:.8rem;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;border-top:1.5px solid var(--border);">{{ row_label }}</td>
+            {% for c in careers %}
+            <td style="background:var(--surface);padding:1rem 1.25rem;font-size:.88rem;border-top:1.5px solid var(--border);border-left:1.5px solid var(--border);vertical-align:top;">{{ c[row_key] }}</td>
+            {% endfor %}
+          </tr>
+          {% endfor %}
+
+          <!-- Tags -->
+          <tr>
+            <td style="background:var(--surface2);padding:1rem 1.25rem;font-size:.8rem;font-weight:800;color:var(--muted);text-transform:uppercase;border-top:1.5px solid var(--border);">Topics</td>
+            {% for c in careers %}
+            <td style="background:var(--surface);padding:1rem 1.25rem;border-top:1.5px solid var(--border);border-left:1.5px solid var(--border);vertical-align:top;">
+              <div class="tags">{% for t in c.tags %}<span class="tag">{{ t }}</span>{% endfor %}</div>
+            </td>
+            {% endfor %}
+          </tr>
+
+          <!-- HS Courses -->
+          <tr>
+            <td style="background:var(--surface2);padding:1rem 1.25rem;font-size:.8rem;font-weight:800;color:var(--muted);text-transform:uppercase;border-top:1.5px solid var(--border);">HS Courses</td>
+            {% for c in careers %}
+            <td style="background:var(--surface);padding:1rem 1.25rem;border-top:1.5px solid var(--border);border-left:1.5px solid var(--border);vertical-align:top;font-size:.85rem;">
+              <ul style="list-style:disc;padding-left:1.2rem;margin:0;">{% for x in c.hs_courses %}<li>{{ x }}</li>{% endfor %}</ul>
+            </td>
+            {% endfor %}
+          </tr>
+
+          <!-- Extracurriculars -->
+          <tr>
+            <td style="background:var(--surface2);padding:1rem 1.25rem;font-size:.8rem;font-weight:800;color:var(--muted);text-transform:uppercase;border-top:1.5px solid var(--border);">Extracurriculars</td>
+            {% for c in careers %}
+            <td style="background:var(--surface);padding:1rem 1.25rem;border-top:1.5px solid var(--border);border-left:1.5px solid var(--border);vertical-align:top;font-size:.85rem;">
+              <ul style="list-style:disc;padding-left:1.2rem;margin:0;">{% for x in c.extracurriculars %}<li>{{ x }}</li>{% endfor %}</ul>
+            </td>
+            {% endfor %}
+          </tr>
+
+          <!-- Tech Skills -->
+          <tr>
+            <td style="background:var(--surface2);padding:1rem 1.25rem;font-size:.8rem;font-weight:800;color:var(--muted);text-transform:uppercase;border-top:1.5px solid var(--border);">Tech Skills</td>
+            {% for c in careers %}
+            <td style="background:var(--surface);padding:1rem 1.25rem;border-top:1.5px solid var(--border);border-left:1.5px solid var(--border);vertical-align:top;">
+              <div class="tags">{% for s in c.skills.technical %}<span class="tag tag-tech" style="font-size:.75rem;">{{ s }}</span>{% endfor %}</div>
+            </td>
+            {% endfor %}
+          </tr>
+
+          <!-- Education -->
+          <tr>
+            <td style="background:var(--surface2);padding:1rem 1.25rem;font-size:.8rem;font-weight:800;color:var(--muted);text-transform:uppercase;border-top:1.5px solid var(--border);">Education</td>
+            {% for c in careers %}
+            <td style="background:var(--surface);padding:1rem 1.25rem;border-top:1.5px solid var(--border);border-left:1.5px solid var(--border);vertical-align:top;font-size:.85rem;">
+              <div class="edu-links">
+                {% for l in (c.education_links.majors + c.education_links.programs + c.education_links.certifications)[:3] %}
+                <a href="{{ l.url }}" target="_blank" rel="noopener noreferrer" class="edu-link" style="padding:.5rem .75rem;font-size:.8rem;">
+                  <i class="fa-solid fa-link" aria-hidden="true"></i>{{ l.title }}
+                </a>
+                {% endfor %}
+              </div>
+            </td>
+            {% endfor %}
+          </tr>
+
+          <!-- Jobs -->
+          <tr>
+            <td style="background:var(--surface2);padding:1rem 1.25rem;font-size:.8rem;font-weight:800;color:var(--muted);text-transform:uppercase;border-top:1.5px solid var(--border);">Entry Jobs</td>
+            {% for c in careers %}
+            <td style="background:var(--surface);padding:1rem 1.25rem;border-top:1.5px solid var(--border);border-left:1.5px solid var(--border);vertical-align:top;font-size:.85rem;">
+              <ul style="list-style:disc;padding-left:1.2rem;margin:0;">{% for j in c.entry_level_jobs %}<li>{{ j }}</li>{% endfor %}</ul>
+            </td>
+            {% endfor %}
+          </tr>
+
+          <!-- CTA row -->
+          <tr>
+            <td style="background:var(--surface2);padding:1rem 1.25rem;border-top:1.5px solid var(--border);"></td>
+            {% for c in careers %}
+            <td style="background:var(--surface);padding:1rem 1.25rem;border-top:1.5px solid var(--border);border-left:1.5px solid var(--border);">
+              <a href="{{ url_for('career_detail', cid=c.id) }}" class="btn btn-primary btn-sm" style="width:100%;justify-content:center;">View Pathway →</a>
+            </td>
+            {% endfor %}
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+    <div class="text-center mt-4">
+      <a href="{{ url_for('careers') }}" class="btn btn-secondary">
+        <i class="fa-solid fa-plus" aria-hidden="true"></i> Add more careers
+      </a>
+    </div>
+    {% endif %}
+
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block title %}About — STEM Pathfinder{% endblock %}
+{% block content %}
+
+<div class="page-header">
+  <div class="container page-header-inner">
+    <p class="page-eyebrow"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> About this tool</p>
+    <h1 class="page-title">About STEM Pathfinder ℹ️</h1>
+    <p class="page-lead">Built for NJ TSA 2026 to help students in grades 7–12 explore STEM careers with honest, transparent guidance.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container" style="max-width:800px;">
+
+    <div class="info-card anim">
+      <h2 class="info-card-title">
+        <span class="section-icon" style="background:var(--violet);" aria-hidden="true"><i class="fa-solid fa-bullseye"></i></span>
+        Our Purpose 🎯
+      </h2>
+      <p>STEM Pathfinder helps middle and high school students explore STEM careers in a way that's honest, encouraging, and actionable. We show you exactly what each career requires — from the courses to take in ninth grade to the certifications that unlock your first job.</p>
+      <p>No account. No tracking. No ads. Your data lives only in your browser's session and disappears when you close the tab.</p>
+    </div>
+
+    <div class="info-card anim d1">
+      <h2 class="info-card-title">
+        <span class="section-icon" style="background:var(--pink);" aria-hidden="true"><i class="fa-solid fa-sliders"></i></span>
+        How Recommendations Work 🔍
+      </h2>
+      <p>The scoring is transparent and deterministic — it works the same way every time:</p>
+      <div class="formula-box" aria-label="Scoring formula">
+        Raw Score = (1.0 × interest tag matches)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ (1.5 × strength-derived tag matches)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ (0.5 × work-style matches)<br><br>
+        Final Score = normalize Raw Score to 0–100<br>
+        Ties = broken by # of matching technical skills
+      </div>
+      <ul class="bullet-list mt-3">
+        <li><i class="fa-solid fa-circle-check bi" style="color:var(--green);" aria-hidden="true"></i><span><strong>Interest matching:</strong> Each career has topic tags. We count how many overlap with what you selected.</span></li>
+        <li><i class="fa-solid fa-circle-check bi" style="color:var(--green);" aria-hidden="true"></i><span><strong>Strength bonus:</strong> Strengths like "analytical thinking" map to interest tags like "math" and "data," weighted 1.5× because they signal a natural fit.</span></li>
+        <li><i class="fa-solid fa-circle-check bi" style="color:var(--green);" aria-hidden="true"></i><span><strong>Work style:</strong> How you like to work (collaborative, hands-on, etc.) adds a small bonus when it matches a career's style.</span></li>
+        <li><i class="fa-solid fa-circle-check bi" style="color:var(--green);" aria-hidden="true"></i><span><strong>No black boxes:</strong> The score is entirely based on the tags you see on each card. Simple and honest.</span></li>
+      </ul>
+    </div>
+
+    <div class="info-card anim d2">
+      <h2 class="info-card-title">
+        <span class="section-icon" style="background:var(--green);" aria-hidden="true"><i class="fa-solid fa-shield-check"></i></span>
+        Content Standards ✅
+      </h2>
+      <ul class="bullet-list">
+        {% for item in [
+          "All career descriptions are original text written for this project.",
+          "Education links point to reputable, non-paywalled resources where possible.",
+          "Links marked \"(placeholder)\" are example paths — verify with your counselor.",
+          "All external links open in a new tab with rel=\"noopener\" for security.",
+          "Pathways reflect realistic timelines for a student starting in grades 7–12.",
+          "Content is school-appropriate and suitable for all audiences.",
+        ] %}
+        <li>
+          <i class="fa-solid fa-circle-check bi" style="color:var(--green);" aria-hidden="true"></i>
+          <span>{{ item }}</span>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="info-card anim d3">
+      <h2 class="info-card-title">
+        <span class="section-icon" style="background:var(--blue);" aria-hidden="true"><i class="fa-solid fa-lock"></i></span>
+        Privacy 🔒
+      </h2>
+      <ul class="bullet-list">
+        <li><i class="fa-solid fa-circle-check bi" style="color:var(--green);" aria-hidden="true"></i><span>No account or login required.</span></li>
+        <li><i class="fa-solid fa-circle-check bi" style="color:var(--green);" aria-hidden="true"></i><span>Your quiz answers are stored only in your browser's session cookie — never sent to a database.</span></li>
+        <li><i class="fa-solid fa-circle-check bi" style="color:var(--green);" aria-hidden="true"></i><span>No tracking, analytics, or advertising of any kind.</span></li>
+        <li><i class="fa-solid fa-circle-check bi" style="color:var(--green);" aria-hidden="true"></i><span>Closing your tab clears all saved data.</span></li>
+      </ul>
+    </div>
+
+    <div style="background:var(--surface2);border:2px dashed var(--border);border-radius:var(--radius-xl);padding:2rem;margin-top:1.5rem;" class="anim d4">
+      <h2 style="font-size:1.1rem;margin-bottom:.75rem;">
+        <i class="fa-solid fa-person-chalkboard" style="color:var(--violet);" aria-hidden="true"></i>
+        A note for students &amp; families 💙
+      </h2>
+      <p style="margin:0;">STEM Pathfinder is a starting point, not a final answer. Career paths are deeply personal and shaped by many factors beyond any quiz. Please discuss your interests and plans with a <strong>school counselor, trusted teacher, or family member</strong> before making big decisions. This tool exists to open doors — not close them. You've got this! 🚀</p>
+    </div>
+
+    <div class="text-center mt-5">
+      <a href="{{ url_for('home') }}#quiz" class="btn btn-primary btn-lg me-2">
+        <i class="fa-solid fa-play" aria-hidden="true"></i> Take the quiz
+      </a>
+      <a href="{{ url_for('careers') }}" class="btn btn-secondary btn-lg">
+        <i class="fa-solid fa-compass" aria-hidden="true"></i> Browse careers
+      </a>
+    </div>
+
+  </div>
+</section>
+{% endblock %}

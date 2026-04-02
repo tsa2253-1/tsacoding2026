@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% block title %}Your STEM Matches — STEM Pathfinder{% endblock %}
+{% block content %}
+
+<div class="page-header">
+  <div class="container page-header-inner">
+    <p class="page-eyebrow"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i> Personalized results</p>
+    <h1 class="page-title">Your top STEM matches 🎯</h1>
+    <p class="page-lead">
+      {% if interests %}Based on your interests in <strong>{{ interests | join(", ") }}</strong>{% if strengths %} and strengths in <strong>{{ strengths | join(", ") }}</strong>{% endif %}.{% else %}Showing all careers — <a href="{{ url_for('home') }}">take the quiz</a> for personal matches.{% endif %}
+    </p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+
+    <div class="filter-bar anim">
+      <div class="row g-3 align-items-center">
+        <div class="col-md-5">
+          <div class="search-wrap">
+            <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
+            <input type="text" id="searchInput" class="search-input" placeholder="Search careers, skills, tags…" aria-label="Search" />
+          </div>
+        </div>
+        <div class="col-md-7">
+          <div class="chips" role="group" aria-label="Filter by topic">
+            <span style="font-size:.78rem;font-weight:800;color:var(--muted);white-space:nowrap;">Filter:</span>
+            {% for tag in all_tags %}
+            <button class="chip {% if tag in interests %}active{% endif %}" data-tag="{{ tag }}" aria-pressed="{{ 'true' if tag in interests else 'false' }}" type="button">{{ tag }}</button>
+            {% endfor %}
+            <button class="chip chip-clear" id="clearChips" type="button" aria-label="Clear filters">✕ Clear</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-grid" id="cardGrid" aria-live="polite" aria-label="Career recommendations">
+      {% for item in scored %}
+      {% set c = item.career %}
+      {% set sc = item.score %}
+      {% set cls = "score-high" if sc >= 70 else ("score-mid" if sc >= 35 else "score-low") %}
+      <article class="career-card anim d{{ loop.index if loop.index <= 4 else 1 }}"
+               data-tags="{{ c.tags | join(' ') }}"
+               data-title="{{ c.title }}"
+               data-skills="{{ (c.skills.technical + c.skills.transferable) | join(' ') }}"
+               style="--card-color:{{ c.color }};"
+               aria-label="{{ c.title }}">
+        <div style="height:4px;background:{{ c.gradient }};"></div>
+        <div class="card-body">
+          <div class="d-flex align-items-start gap-3 mb-2">
+            <div class="card-icon" style="background:{{ c.gradient }};" aria-hidden="true">
+              <i class="{{ c.icon }}"></i>
+            </div>
+            <div style="flex:1;">
+              <h2 class="card-title">{{ c.title }}</h2>
+              {% if sc > 0 %}
+              <div class="score-wrap {{ cls }}">
+                <div class="score-header">
+                  <span class="score-label">Match</span>
+                  <span class="score-val">{{ sc }}%</span>
+                </div>
+                <div class="score-bg" role="progressbar" aria-valuenow="{{ sc }}" aria-valuemin="0" aria-valuemax="100">
+                  <div class="score-fill" data-score="{{ sc }}"></div>
+                </div>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+
+          <p class="card-summary">{{ c.summary }}</p>
+
+          <div class="tags" aria-label="Tags">
+            {% for t in c.tags[:4] %}<span class="tag">{{ t }}</span>{% endfor %}
+          </div>
+
+          <div class="card-actions">
+            <a href="{{ url_for('career_detail', cid=c.id) }}" class="btn btn-primary btn-sm" style="flex:1;" aria-label="View {{ c.title }} pathway">
+              <i class="fa-solid fa-road" aria-hidden="true"></i> View Pathway
+            </a>
+            <form method="POST" action="{{ url_for('bookmark', cid=c.id) }}" style="display:inline;">
+              <input type="hidden" name="next" value="{{ request.url }}">
+              <button type="submit" class="btn btn-bookmark btn-sm {% if c.id in bookmarks %}active{% endif %}" aria-label="{% if c.id in bookmarks %}Remove bookmark{% else %}Bookmark{% endif %} {{ c.title }}">
+                <i class="fa-{% if c.id in bookmarks %}solid{% else %}regular{% endif %} fa-bookmark" aria-hidden="true"></i>
+              </button>
+            </form>
+            <form method="POST" action="{{ url_for('compare_toggle', cid=c.id) }}" style="display:inline;">
+              <input type="hidden" name="next" value="{{ request.url }}">
+              <button type="submit" class="btn btn-compare btn-sm {% if c.id in compare_list %}active{% endif %}" aria-label="{% if c.id in compare_list %}Remove from compare{% else %}Add to compare{% endif %} {{ c.title }}">
+                <i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+
+    <div id="noResults" class="no-results" style="display:none;" aria-live="polite">
+      <i class="fa-solid fa-search" aria-hidden="true"></i>
+      <h3>No results found</h3>
+      <p>Try clearing the filter or searching for something else.</p>
+    </div>
+
+    <div class="text-center mt-5">
+      <a href="{{ url_for('home') }}" class="btn btn-secondary me-2">
+        <i class="fa-solid fa-rotate-left" aria-hidden="true"></i> Redo quiz
+      </a>
+      <a href="{{ url_for('careers') }}" class="btn btn-outline">
+        <i class="fa-solid fa-compass" aria-hidden="true"></i> Browse all careers
+      </a>
+    </div>
+
+  </div>
+</section>
+{% endblock %}
